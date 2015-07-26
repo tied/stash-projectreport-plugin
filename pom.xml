@@ -4,10 +4,10 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.valens</groupId>
     <artifactId>stash-projectreport-plugin</artifactId>
-    <version>1.0</version>
-    <organization>
-        <name>Example Company</name>
-        <url>http://www.example.com/</url>
+    <version>1.0-SNAPSHOT</version>
+	<organization>
+        <name>Valens Soft</name>
+        <url>https://github.com/valenssoftware</url>
     </organization>
     <name>projectreport</name>
     <description>This is the com.valens:projectreport plugin for Atlassian Stash.</description>
