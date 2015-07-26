@@ -1,0 +1,43 @@
+{namespace plugin}
+
+/**
+ * @param project Project object
+ * @param commits ArrayList<Commit> object
+ */
+{template .project}
+<html>
+<head>
+    <meta name="decorator" content="stash.project.general">
+    <meta name="projectKey" content="{$project.key}">
+    <meta name="activeTab" content="project-plugin-tab">
+    <title>{$project.key} / Changes Tab</title>
+</head>
+<body>
+    <h3>Project: {$project.key}</h3>
+    <p>Welcome to changes tab in the project page.</p>
+
+            <table class="aui" id="basic">
+	    
+	    <tbody>
+                    <tr>
+			    <td width='10%'>ID</td>
+                            <td width='10%'>Repository Name</td>
+			    <td width='10%'>Author</td>
+                            <td width='10%'>TimeStamp</td>
+                            <td>Message</td>
+		    </tr>
+                    {foreach $commit in $commits}       
+		    <tr>
+			    <td width='10%'>{$commit.id}</td>
+                            <td width='10%'>{$commit.repository.name}</td>
+			    <td width='10%'>{$commit.author.name}</td>
+                            <td width='10%'>{$commit.authorTimestamp.time}</td>
+                            <td>{$commit.message}</td>
+		    </tr>
+		    {/foreach}
+	    <tbody>
+	</table>
+
+</body>
+</html>
+{/template}
