@@ -2,7 +2,7 @@
 
 /**
  * @param project Project object
- * @param commits ArrayList<Commit> object
+ * @param commits ArrayList<VisualCommit> object
  */
 {template .project}
 <html>
@@ -20,19 +20,22 @@
 	    
 	    <tbody>
                     <tr>
-			    <td width='10%'>ID</td>
-                            <td width='10%'>Repository Name</td>
-			    <td width='10%'>Author</td>
-                            <td width='10%'>TimeStamp</td>
-                            <td>Message</td>
+			    
+                            <td width='10%'><b>Repository Name</b></td>                            
+			    <td width='10%'><b>Author</b></td>    
+                            <td width='10%'><b>Commit</b></td>                    
+                            <td><b>Message</b></td>
+                            <td width='10%'><b>Date</b></td>  
 		    </tr>
                     {foreach $commit in $commits}       
 		    <tr>
-			    <td width='10%'>{$commit.id}</td>
-                            <td width='10%'>{$commit.repository.name}</td>
-			    <td width='10%'>{$commit.author.name}</td>
-                            <td width='10%'>{$commit.authorTimestamp.time}</td>
+
+			    <td width='10%'>{$commit.repository}</td>
+                            <td width='10%'>{$commit.author}</td>                            
+                            <td width='10%'><a href='/projects/{$commit.project}/repos/{$commit.repository}/commits/{$commit.commitHash}'>{$commit.shortHash}</a></td>
                             <td>{$commit.message}</td>
+                            <td width='10%'>{$commit.date}</td>			    
+                            
 		    </tr>
 		    {/foreach}
 	    <tbody>

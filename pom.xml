@@ -9,7 +9,7 @@
         <name>Valens Soft</name>
         <url>https://github.com/valenssoftware</url>
     </organization>
-    <name>projectreport</name>
+    <name>Project Recent Commits</name>
     <description>This is the com.valens:projectreport plugin for Atlassian Stash.</description>
     <packaging>atlassian-plugin</packaging>
     <dependencyManagement>

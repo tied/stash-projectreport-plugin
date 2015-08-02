@@ -76,24 +76,24 @@ public class ProjectServlet extends AbstractServlet
             isSettings = true;
         }
 
-        ArrayList<Commit> commits = new ArrayList<Commit>();
+        ArrayList<VisualCommit> commits = new ArrayList<VisualCommit>();
         for (Commit aux : CommitArchiveService.getInstance().getList())
         {
             if (aux.getRepository().getProject().getKey().equalsIgnoreCase(project.getKey()))
             {
-                commits.add(aux);
+                commits.add(new VisualCommit(aux));
                 
 
             }
         }
 
-        Collections.sort(commits, new Comparator<Commit>()
+        Collections.sort(commits, new Comparator<VisualCommit>()
         {
             @Override
-            public int compare(Commit fruite1, Commit fruite2)
+            public int compare(VisualCommit fruite1, VisualCommit fruite2)
             {
 
-                return fruite2.getAuthorTimestamp().compareTo(fruite1.getAuthorTimestamp());
+                return fruite2.getDate().compareTo(fruite1.getDate());
             }
         });
 
