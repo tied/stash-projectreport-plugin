@@ -93,7 +93,7 @@ public class ProjectServlet extends AbstractServlet
             public int compare(VisualCommit fruite1, VisualCommit fruite2)
             {
 
-                return fruite2.getDate().compareTo(fruite1.getDate());
+                return fruite2.getTimestamp().compareTo(fruite1.getTimestamp());
             }
         });
 

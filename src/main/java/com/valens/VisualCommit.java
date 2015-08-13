@@ -6,6 +6,7 @@
 package com.valens;
 
 import com.atlassian.stash.commit.Commit;
+import java.util.Date;
 
 /**
  *
@@ -15,6 +16,16 @@ public class VisualCommit
 {
     private String author;
     private String date;
+    private Date timestamp;
+
+    public Date getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
+    }
+    
     private String commitHash;
     private String shortHash;
     private String message;
@@ -30,6 +41,7 @@ public class VisualCommit
         this.message = m.getMessage();
         this.repository = m.getRepository().getName();
         this.project = m.getRepository().getProject().getKey();
+        this.timestamp = m.getAuthorTimestamp();
     }
 
     public String getRepository()
