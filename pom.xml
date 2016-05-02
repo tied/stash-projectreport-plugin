@@ -12,73 +12,74 @@
     <name>Project Recent Commits</name>
     <description>This is the com.valens:projectreport plugin for Atlassian Stash.</description>
     <packaging>atlassian-plugin</packaging>
+
+    <properties>
+        <bitbucket.version>4.3.0</bitbucket.version>
+        <bitbucket.data.version>${bitbucket.version}</bitbucket.data.version>
+        <amps.version>6.1.0</amps.version>
+        <plugin.testrunner.version>1.1</plugin.testrunner.version>
+    </properties>
+    
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>com.atlassian.stash</groupId>
-                <artifactId>stash-parent</artifactId>
-                <version>${stash.version}</version>
+                <groupId>com.atlassian.bitbucket.server</groupId>
+                <artifactId>bitbucket-parent</artifactId>
+                <version>${bitbucket.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
+    
     <dependencies>
         <dependency>
-            <groupId>com.atlassian.sal</groupId>
-            <artifactId>sal-api</artifactId>
+            <groupId>com.atlassian.bitbucket.server</groupId>
+            <artifactId>bitbucket-api</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.atlassian.stash</groupId>
-            <artifactId>stash-api</artifactId>
+            <groupId>com.atlassian.bitbucket.server</groupId>
+            <artifactId>bitbucket-git-api</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.atlassian.stash</groupId>
-            <artifactId>stash-spi</artifactId>
+            <groupId>com.atlassian.bitbucket.server</groupId>
+            <artifactId>bitbucket-scm-common</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.atlassian.stash</groupId>
-            <artifactId>stash-page-objects</artifactId>
+            <groupId>com.atlassian.bitbucket.server</groupId>
+            <artifactId>bitbucket-util</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        
-        <dependency>
-            <groupId>commons-lang</groupId>
-            <artifactId>commons-lang</artifactId>
-            <version>2.6</version>
-            <scope>provided</scope>
-        </dependency>
-        <!-- WIRED TEST RUNNER DEPENDENCIES -->
-       
-        <dependency>
-            <groupId>javax.ws.rs</groupId>
-            <artifactId>jsr311-api</artifactId>
-            <version>1.1.1</version>
+            <groupId>com.atlassian.bitbucket.server</groupId>
+            <artifactId>bitbucket-rest-api</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.2.2-atlassian-1</version>
+            <groupId>com.atlassian.bitbucket.server</groupId>
+            <artifactId>bitbucket-page-objects</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.atlassian.plugins</groupId>
+            <artifactId>atlassian-plugins-core</artifactId>
+            <scope>provided</scope>
         </dependency>
 
-             <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <scope>provided</scope>
+        <!-- WIRED TEST RUNNER DEPENDENCIES -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>commons-lang</groupId>
-            <artifactId>commons-lang</artifactId>
-            <scope>provided</scope>
+            <groupId>com.atlassian.plugins</groupId>
+            <artifactId>atlassian-plugins-osgi-testrunner</artifactId>
+            <version>${plugin.testrunner.version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.atlassian.soy</groupId>
@@ -86,7 +87,8 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
-    <build>
+    
+    <!-- build>
         <plugins>
             <plugin>
                 <groupId>com.atlassian.maven.plugins</groupId>
@@ -112,11 +114,48 @@
                 </configuration>
             </plugin>
         </plugins>
+    </build-->
+    
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.1</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>com.atlassian.maven.plugins</groupId>
+                <artifactId>bitbucket-maven-plugin</artifactId>
+                <version>${amps.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Export-Package>
+                            com.valens,
+                            com.valens.hook
+                        </Export-Package>
+                        <Import-Package>
+                            *
+                        </Import-Package>
+                        
+                        <Spring-Context>*</Spring-Context>
+                    </instructions>
+                    <products>
+                        <product>
+                            <id>bitbucket</id>
+                            <instanceId>bitbucket</instanceId>
+                            <version>${bitbucket.version}</version>
+                            <dataVersion>${bitbucket.data.version}</dataVersion>
+                            <containerId>tomcat8x</containerId>
+                        </product>
+                    </products>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
-    <properties>
-        <stash.version>3.11.0</stash.version>
-        <stash.data.version>3.11.0</stash.data.version>
-        <amps.version>5.0.13</amps.version>
-        <plugin.testrunner.version>1.2.3</plugin.testrunner.version>
-    </properties>
+
 </project>

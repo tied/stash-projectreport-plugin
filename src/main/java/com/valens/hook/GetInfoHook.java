@@ -1,15 +1,15 @@
 package com.valens.hook;
 
-import com.atlassian.stash.commit.Commit;
-import com.atlassian.stash.commit.CommitService;
-import com.atlassian.stash.commit.CommitsBetweenRequest;
-import com.atlassian.stash.hook.repository.*;
-import com.atlassian.stash.nav.NavBuilder;
-import com.atlassian.stash.repository.*;
-import com.atlassian.stash.setting.*;
-import com.atlassian.stash.util.Page;
-import com.atlassian.stash.util.PageRequest;
-import com.atlassian.stash.util.PageRequestImpl;
+import com.atlassian.bitbucket.commit.Commit;
+import com.atlassian.bitbucket.commit.CommitService;
+import com.atlassian.bitbucket.commit.CommitsBetweenRequest;
+import com.atlassian.bitbucket.hook.repository.*;
+import com.atlassian.bitbucket.nav.NavBuilder;
+import com.atlassian.bitbucket.repository.*;
+import com.atlassian.bitbucket.setting.*;
+import com.atlassian.bitbucket.util.Page;
+import com.atlassian.bitbucket.util.PageRequest;
+import com.atlassian.bitbucket.util.PageRequestImpl;
 import com.valens.CommitArchiveService;
 import java.net.URL;
 import java.util.Collection;
@@ -17,7 +17,7 @@ import java.util.Collection;
 public class GetInfoHook implements AsyncPostReceiveRepositoryHook, RepositorySettingsValidator
 {
     
-        private final CommitService commitService;
+    private final CommitService commitService;
     private final NavBuilder navBuilder;
     
     /**

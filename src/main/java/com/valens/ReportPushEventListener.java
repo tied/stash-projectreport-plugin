@@ -6,15 +6,15 @@
 package com.valens;
 
 import com.atlassian.event.api.EventListener;
-import com.atlassian.stash.commit.Commit;
-import com.atlassian.stash.commit.CommitService;
-import com.atlassian.stash.commit.CommitsBetweenRequest;
-import com.atlassian.stash.event.RepositoryPushEvent;
-import com.atlassian.stash.nav.NavBuilder;
-import com.atlassian.stash.repository.RefChange;
-import com.atlassian.stash.util.Page;
-import com.atlassian.stash.util.PageRequest;
-import com.atlassian.stash.util.PageRequestImpl;
+import com.atlassian.bitbucket.commit.Commit;
+import com.atlassian.bitbucket.commit.CommitService;
+import com.atlassian.bitbucket.commit.CommitsBetweenRequest;
+import com.atlassian.bitbucket.event.repository.RepositoryPushEvent;
+import com.atlassian.bitbucket.nav.NavBuilder;
+import com.atlassian.bitbucket.repository.RefChange;
+import com.atlassian.bitbucket.util.Page;
+import com.atlassian.bitbucket.util.PageRequest;
+import com.atlassian.bitbucket.util.PageRequestImpl;
 /**
  *
  * @author IHutuleac

@@ -5,7 +5,7 @@
  */
 package com.valens;
 
-import com.atlassian.stash.commit.Commit;
+import com.atlassian.bitbucket.commit.Commit;
 import java.util.Date;
 
 /**

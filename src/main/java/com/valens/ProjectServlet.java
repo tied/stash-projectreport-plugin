@@ -1,22 +1,13 @@
 package com.valens;
 
 import com.atlassian.soy.renderer.SoyTemplateRenderer;
-import com.atlassian.stash.commit.Commit;
-import com.atlassian.stash.commit.CommitService;
-import com.atlassian.stash.nav.NavBuilder;
-import com.atlassian.stash.project.Project;
-import com.atlassian.stash.project.ProjectService;
-import com.atlassian.stash.repository.Repository;
-import com.atlassian.stash.repository.RepositoryService;
-import com.atlassian.stash.user.Permission;
-import com.atlassian.stash.user.SecurityService;
-import com.atlassian.stash.util.Operation;
-import com.atlassian.stash.util.Page;
-import com.atlassian.stash.util.PageProvider;
-import com.atlassian.stash.util.PageRequest;
-import com.atlassian.stash.util.PageRequestImpl;
-import com.atlassian.stash.util.PageUtils;
-import com.atlassian.stash.util.PagedIterable;
+import com.atlassian.bitbucket.commit.Commit;
+import com.atlassian.bitbucket.commit.CommitService;
+import com.atlassian.bitbucket.project.Project;
+import com.atlassian.bitbucket.project.ProjectService;
+
+import com.atlassian.bitbucket.repository.RepositoryService;
+import com.atlassian.bitbucket.user.SecurityService;
 import com.google.common.collect.ImmutableMap;
 
 import javax.servlet.ServletException;

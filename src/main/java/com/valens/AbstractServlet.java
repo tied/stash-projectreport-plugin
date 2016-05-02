@@ -20,7 +20,7 @@ public abstract class AbstractServlet extends HttpServlet {
         resp.setContentType("text/html;charset=UTF-8");
         try {
             soyTemplateRenderer.render(resp.getWriter(),
-                    "com.valens.stash-projectreport-plugin:valens-soy",
+                    "com.valens.stash-projectreport-plugin:soy-templates",
                     templateName,
                     data);
         } catch (SoyException e) {
